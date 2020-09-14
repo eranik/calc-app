@@ -1,4 +1,4 @@
-module calc-app
+module github.com/eranik/calc-app
 
 go 1.15
 

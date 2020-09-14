@@ -10,18 +10,18 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/runtime/middleware"
 
-	"calc-app/models"
-	"calc-app/restapi/operations"
-	"calc-app/restapi/operations/math"
+	"github.com/eranik/calc-app/models"
+	"github.com/eranik/calc-app/restapi/operations"
+	"github.com/eranik/calc-app/restapi/operations/math"
 )
 
-//go:generate swagger generate server --target ../../calc-app --name CalcApp --spec ../swagger.yaml --principal models.Principal
+//go:generate swagger generate server --target ../../calc-app --name GithubComEranikCalcApp --spec ../swagger.yaml --principal models.Principal
 
-func configureFlags(api *operations.CalcAppAPI) {
+func configureFlags(api *operations.GithubComEranikCalcAppAPI) {
 	// api.CommandLineOptionsGroups = []swag.CommandLineOptionsGroup{ ... }
 }
 
-func configureAPI(api *operations.CalcAppAPI) http.Handler {
+func configureAPI(api *operations.GithubComEranikCalcAppAPI) http.Handler {
 	// configure the api here
 	api.ServeError = errors.ServeError
 

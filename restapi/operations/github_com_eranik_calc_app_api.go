@@ -19,13 +19,13 @@ import (
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
-	"calc-app/models"
-	"calc-app/restapi/operations/math"
+	"github.com/eranik/calc-app/models"
+	"github.com/eranik/calc-app/restapi/operations/math"
 )
 
-// NewCalcAppAPI creates a new CalcApp instance
-func NewCalcAppAPI(spec *loads.Document) *CalcAppAPI {
-	return &CalcAppAPI{
+// NewGithubComEranikCalcAppAPI creates a new GithubComEranikCalcApp instance
+func NewGithubComEranikCalcAppAPI(spec *loads.Document) *GithubComEranikCalcAppAPI {
+	return &GithubComEranikCalcAppAPI{
 		handlers:            make(map[string]map[string]http.Handler),
 		formats:             strfmt.Default,
 		defaultConsumes:     "application/json",
@@ -61,8 +61,8 @@ func NewCalcAppAPI(spec *loads.Document) *CalcAppAPI {
 	}
 }
 
-/*CalcAppAPI Simple calc api for mathematical add and subtract. */
-type CalcAppAPI struct {
+/*GithubComEranikCalcAppAPI Simple calc api for mathematical add and subtract. */
+type GithubComEranikCalcAppAPI struct {
 	spec            *loads.Document
 	context         *middleware.Context
 	handlers        map[string]map[string]http.Handler
@@ -123,52 +123,52 @@ type CalcAppAPI struct {
 }
 
 // UseRedoc for documentation at /docs
-func (o *CalcAppAPI) UseRedoc() {
+func (o *GithubComEranikCalcAppAPI) UseRedoc() {
 	o.useSwaggerUI = false
 }
 
 // UseSwaggerUI for documentation at /docs
-func (o *CalcAppAPI) UseSwaggerUI() {
+func (o *GithubComEranikCalcAppAPI) UseSwaggerUI() {
 	o.useSwaggerUI = true
 }
 
 // SetDefaultProduces sets the default produces media type
-func (o *CalcAppAPI) SetDefaultProduces(mediaType string) {
+func (o *GithubComEranikCalcAppAPI) SetDefaultProduces(mediaType string) {
 	o.defaultProduces = mediaType
 }
 
 // SetDefaultConsumes returns the default consumes media type
-func (o *CalcAppAPI) SetDefaultConsumes(mediaType string) {
+func (o *GithubComEranikCalcAppAPI) SetDefaultConsumes(mediaType string) {
 	o.defaultConsumes = mediaType
 }
 
 // SetSpec sets a spec that will be served for the clients.
-func (o *CalcAppAPI) SetSpec(spec *loads.Document) {
+func (o *GithubComEranikCalcAppAPI) SetSpec(spec *loads.Document) {
 	o.spec = spec
 }
 
 // DefaultProduces returns the default produces media type
-func (o *CalcAppAPI) DefaultProduces() string {
+func (o *GithubComEranikCalcAppAPI) DefaultProduces() string {
 	return o.defaultProduces
 }
 
 // DefaultConsumes returns the default consumes media type
-func (o *CalcAppAPI) DefaultConsumes() string {
+func (o *GithubComEranikCalcAppAPI) DefaultConsumes() string {
 	return o.defaultConsumes
 }
 
 // Formats returns the registered string formats
-func (o *CalcAppAPI) Formats() strfmt.Registry {
+func (o *GithubComEranikCalcAppAPI) Formats() strfmt.Registry {
 	return o.formats
 }
 
 // RegisterFormat registers a custom format validator
-func (o *CalcAppAPI) RegisterFormat(name string, format strfmt.Format, validator strfmt.Validator) {
+func (o *GithubComEranikCalcAppAPI) RegisterFormat(name string, format strfmt.Format, validator strfmt.Validator) {
 	o.formats.Add(name, format, validator)
 }
 
-// Validate validates the registrations in the CalcAppAPI
-func (o *CalcAppAPI) Validate() error {
+// Validate validates the registrations in the GithubComEranikCalcAppAPI
+func (o *GithubComEranikCalcAppAPI) Validate() error {
 	var unregistered []string
 
 	if o.JSONConsumer == nil {
@@ -198,12 +198,12 @@ func (o *CalcAppAPI) Validate() error {
 }
 
 // ServeErrorFor gets a error handler for a given operation id
-func (o *CalcAppAPI) ServeErrorFor(operationID string) func(http.ResponseWriter, *http.Request, error) {
+func (o *GithubComEranikCalcAppAPI) ServeErrorFor(operationID string) func(http.ResponseWriter, *http.Request, error) {
 	return o.ServeError
 }
 
 // AuthenticatorsFor gets the authenticators for the specified security schemes
-func (o *CalcAppAPI) AuthenticatorsFor(schemes map[string]spec.SecurityScheme) map[string]runtime.Authenticator {
+func (o *GithubComEranikCalcAppAPI) AuthenticatorsFor(schemes map[string]spec.SecurityScheme) map[string]runtime.Authenticator {
 	result := make(map[string]runtime.Authenticator)
 	for name := range schemes {
 		switch name {
@@ -219,13 +219,13 @@ func (o *CalcAppAPI) AuthenticatorsFor(schemes map[string]spec.SecurityScheme) m
 }
 
 // Authorizer returns the registered authorizer
-func (o *CalcAppAPI) Authorizer() runtime.Authorizer {
+func (o *GithubComEranikCalcAppAPI) Authorizer() runtime.Authorizer {
 	return o.APIAuthorizer
 }
 
 // ConsumersFor gets the consumers for the specified media types.
 // MIME type parameters are ignored here.
-func (o *CalcAppAPI) ConsumersFor(mediaTypes []string) map[string]runtime.Consumer {
+func (o *GithubComEranikCalcAppAPI) ConsumersFor(mediaTypes []string) map[string]runtime.Consumer {
 	result := make(map[string]runtime.Consumer, len(mediaTypes))
 	for _, mt := range mediaTypes {
 		switch mt {
@@ -242,7 +242,7 @@ func (o *CalcAppAPI) ConsumersFor(mediaTypes []string) map[string]runtime.Consum
 
 // ProducersFor gets the producers for the specified media types.
 // MIME type parameters are ignored here.
-func (o *CalcAppAPI) ProducersFor(mediaTypes []string) map[string]runtime.Producer {
+func (o *GithubComEranikCalcAppAPI) ProducersFor(mediaTypes []string) map[string]runtime.Producer {
 	result := make(map[string]runtime.Producer, len(mediaTypes))
 	for _, mt := range mediaTypes {
 		switch mt {
@@ -258,7 +258,7 @@ func (o *CalcAppAPI) ProducersFor(mediaTypes []string) map[string]runtime.Produc
 }
 
 // HandlerFor gets a http.Handler for the provided operation method and path
-func (o *CalcAppAPI) HandlerFor(method, path string) (http.Handler, bool) {
+func (o *GithubComEranikCalcAppAPI) HandlerFor(method, path string) (http.Handler, bool) {
 	if o.handlers == nil {
 		return nil, false
 	}
@@ -273,8 +273,8 @@ func (o *CalcAppAPI) HandlerFor(method, path string) (http.Handler, bool) {
 	return h, ok
 }
 
-// Context returns the middleware context for the calc app API
-func (o *CalcAppAPI) Context() *middleware.Context {
+// Context returns the middleware context for the github com eranik calc app API
+func (o *GithubComEranikCalcAppAPI) Context() *middleware.Context {
 	if o.context == nil {
 		o.context = middleware.NewRoutableContext(o.spec, o, nil)
 	}
@@ -282,7 +282,7 @@ func (o *CalcAppAPI) Context() *middleware.Context {
 	return o.context
 }
 
-func (o *CalcAppAPI) initHandlerCache() {
+func (o *GithubComEranikCalcAppAPI) initHandlerCache() {
 	o.Context() // don't care about the result, just that the initialization happened
 	if o.handlers == nil {
 		o.handlers = make(map[string]map[string]http.Handler)
@@ -300,7 +300,7 @@ func (o *CalcAppAPI) initHandlerCache() {
 
 // Serve creates a http handler to serve the API over HTTP
 // can be used directly in http.ListenAndServe(":8000", api.Serve(nil))
-func (o *CalcAppAPI) Serve(builder middleware.Builder) http.Handler {
+func (o *GithubComEranikCalcAppAPI) Serve(builder middleware.Builder) http.Handler {
 	o.Init()
 
 	if o.Middleware != nil {
@@ -313,24 +313,24 @@ func (o *CalcAppAPI) Serve(builder middleware.Builder) http.Handler {
 }
 
 // Init allows you to just initialize the handler cache, you can then recompose the middleware as you see fit
-func (o *CalcAppAPI) Init() {
+func (o *GithubComEranikCalcAppAPI) Init() {
 	if len(o.handlers) == 0 {
 		o.initHandlerCache()
 	}
 }
 
 // RegisterConsumer allows you to add (or override) a consumer for a media type.
-func (o *CalcAppAPI) RegisterConsumer(mediaType string, consumer runtime.Consumer) {
+func (o *GithubComEranikCalcAppAPI) RegisterConsumer(mediaType string, consumer runtime.Consumer) {
 	o.customConsumers[mediaType] = consumer
 }
 
 // RegisterProducer allows you to add (or override) a producer for a media type.
-func (o *CalcAppAPI) RegisterProducer(mediaType string, producer runtime.Producer) {
+func (o *GithubComEranikCalcAppAPI) RegisterProducer(mediaType string, producer runtime.Producer) {
 	o.customProducers[mediaType] = producer
 }
 
 // AddMiddlewareFor adds a http middleware to existing handler
-func (o *CalcAppAPI) AddMiddlewareFor(method, path string, builder middleware.Builder) {
+func (o *GithubComEranikCalcAppAPI) AddMiddlewareFor(method, path string, builder middleware.Builder) {
 	um := strings.ToUpper(method)
 	if path == "/" {
 		path = ""

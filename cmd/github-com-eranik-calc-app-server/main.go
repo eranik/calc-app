@@ -6,9 +6,8 @@ import (
 	"log"
 	"os"
 
-	"calc-app/restapi"
-	"calc-app/restapi/operations"
-
+	"github.com/eranik/calc-app/restapi"
+	"github.com/eranik/calc-app/restapi/operations"
 	"github.com/go-openapi/loads"
 	flags "github.com/jessevdk/go-flags"
 )
@@ -23,7 +22,7 @@ func main() {
 		log.Fatalln(err)
 	}
 
-	api := operations.NewCalcAppAPI(swaggerSpec)
+	api := operations.NewGithubComEranikCalcAppAPI(swaggerSpec)
 	server := restapi.NewServer(api)
 	defer server.Shutdown()
 

@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
-	"calc-app/models"
+	"github.com/eranik/calc-app/models"
 )
 
 // AddHandlerFunc turns a function with the right signature into a add handler

@@ -19,8 +19,8 @@ curl -k -i -H 'Content-Type: application/keyauth.api.v1+json' -H 'X-API-Key:abcd
 
 ## Senerate Client and Server from swagger spec
 
-swagger  generate server -A calc-app -P models.Principal -f ./swagger.yaml
-swagger  generate client -A calc-app -P models.Principal -f ./swagger.yaml
+swagger  generate server -A github.com/eranik/calc-app -P models.Principal -f ./swagger.yaml
+swagger  generate client -A github.com/eranik/calc-app -P models.Principal -f ./swagger.yaml
 
 I have done this already
 
@@ -51,3 +51,19 @@ OpenAPI (Swagger) Editor
 or use online at https://editor.swagger.io/
 
 
+## Further notes
+### Go Module
+```
+go mod init 'github.com/eranik/calc-app'
+go get -u ./...
+```
+
+### Build
+```
+go build ./cmd/github-com-eranik-calc-app-server/main.go 
+```
+
+### Run
+```
+./run_server.sh
+```

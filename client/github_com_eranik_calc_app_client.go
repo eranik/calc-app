@@ -10,10 +10,10 @@ import (
 	httptransport "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 
-	"calc-app/client/math"
+	"github.com/eranik/calc-app/client/math"
 )
 
-// Default calc app HTTP client.
+// Default github com eranik calc app HTTP client.
 var Default = NewHTTPClient(nil)
 
 const (
@@ -28,14 +28,14 @@ const (
 // DefaultSchemes are the default schemes found in Meta (info) section of spec file
 var DefaultSchemes = []string{"https"}
 
-// NewHTTPClient creates a new calc app HTTP client.
-func NewHTTPClient(formats strfmt.Registry) *CalcApp {
+// NewHTTPClient creates a new github com eranik calc app HTTP client.
+func NewHTTPClient(formats strfmt.Registry) *GithubComEranikCalcApp {
 	return NewHTTPClientWithConfig(formats, nil)
 }
 
-// NewHTTPClientWithConfig creates a new calc app HTTP client,
+// NewHTTPClientWithConfig creates a new github com eranik calc app HTTP client,
 // using a customizable transport config.
-func NewHTTPClientWithConfig(formats strfmt.Registry, cfg *TransportConfig) *CalcApp {
+func NewHTTPClientWithConfig(formats strfmt.Registry, cfg *TransportConfig) *GithubComEranikCalcApp {
 	// ensure nullable parameters have default
 	if cfg == nil {
 		cfg = DefaultTransportConfig()
@@ -46,14 +46,14 @@ func NewHTTPClientWithConfig(formats strfmt.Registry, cfg *TransportConfig) *Cal
 	return New(transport, formats)
 }
 
-// New creates a new calc app client
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *CalcApp {
+// New creates a new github com eranik calc app client
+func New(transport runtime.ClientTransport, formats strfmt.Registry) *GithubComEranikCalcApp {
 	// ensure nullable parameters have default
 	if formats == nil {
 		formats = strfmt.Default
 	}
 
-	cli := new(CalcApp)
+	cli := new(GithubComEranikCalcApp)
 	cli.Transport = transport
 	cli.Math = math.New(transport, formats)
 	return cli
@@ -98,15 +98,15 @@ func (cfg *TransportConfig) WithSchemes(schemes []string) *TransportConfig {
 	return cfg
 }
 
-// CalcApp is a client for calc app
-type CalcApp struct {
+// GithubComEranikCalcApp is a client for github com eranik calc app
+type GithubComEranikCalcApp struct {
 	Math math.ClientService
 
 	Transport runtime.ClientTransport
 }
 
 // SetTransport changes the transport on the client and all its subresources
-func (c *CalcApp) SetTransport(transport runtime.ClientTransport) {
+func (c *GithubComEranikCalcApp) SetTransport(transport runtime.ClientTransport) {
 	c.Transport = transport
 	c.Math.SetTransport(transport)
 }
