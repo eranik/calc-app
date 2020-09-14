@@ -1,5 +1,6 @@
 # Swagger based Calc App
-Mostly using 
+
+
 ## Run server
 ```
 ./run_server.sh
