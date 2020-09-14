@@ -1,0 +1,90 @@
+swagger: '2.0'
+
+info:
+  version: "0.0.1"
+  title: CalcApp
+  description: Simple calc api for mathematical add and subtract.
+
+schemes:
+    - "https"
+basePath: /
+produces:
+  - application/json
+consumes:
+  - application/json
+
+securityDefinitions:
+    # Currently no db with fixed value >> X-API-Key: "abcde"
+    APIKeyHeader:
+        type: apiKey
+        in: header
+        name: X-API-Key
+    
+# Global security (applies to all operations):
+security:
+    - APIKeyHeader: []
+paths:
+    '/add':
+        get:
+            summary: Get sum of two integers, x and y, as a result.
+            parameters:
+              - name: a
+                in : query
+                required: true
+                type: integer
+              - name: b
+                in : query
+                required: true
+                type: integer
+            tags:
+              - math
+            operationId: add
+            responses:
+              200:
+                description: Sum of two integers.
+                schema:
+                  type: object
+                  properties:
+                    res:
+                      type: integer
+                      x-omitempty: false
+              401:
+                description: Unauthorized
+              403:
+                description: Forbidden
+              500:
+                description: Unexpected error
+    '/subtract':
+        get:
+            summary: Get subtract of two integers, x and y, as a result.
+            parameters:
+              - name: a
+                in : query
+                required: true
+                type: integer
+              - name: b
+                in : query
+                required: true
+                type: integer
+            tags:
+              - math
+            operationId: subtract
+            responses:
+              200:
+                description: subtract of two integers.
+                schema:
+                  type: object
+                  properties:
+                    res:
+                      type: integer
+                      x-omitempty: false
+              401:
+                description: Unauthorized
+              403:
+                description: Forbidden
+              500:
+                description: Unexpected error
+                
+definitions:
+  principal:
+    type: string
