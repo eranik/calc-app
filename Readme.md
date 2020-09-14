@@ -2,6 +2,8 @@
 
 
 ## Run server
+Binary, main, file of the server is also pushed to repo for ease of use.
+
 ```
 ./run_server.sh
 ```
