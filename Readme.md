@@ -1,5 +1,9 @@
 # Swagger based Calc App
 
+## Summary
+- Uses https
+- Has api documentation using openapi/swagger
+
 
 ## Run server
 Binary, main, file of the server is also pushed to repo for ease of use.
