@@ -21,11 +21,11 @@ curl -k -H 'X-API-Key:abcd' 'https://127.0.0.1:4433/subtract?a=1&b=11'
 curl -k -i -H 'Content-Type: application/keyauth.api.v1+json' -H 'X-API-Key:abcd' 'https://127.0.0.1:4433/subtract?a=1&b=11'
 ```
 
-## Senerate Client and Server from swagger spec
-
+## Generate Client and Server from swagger spec
+```
 swagger  generate server -A github.com/eranik/calc-app -P models.Principal -f ./swagger.yaml
 swagger  generate client -A github.com/eranik/calc-app -P models.Principal -f ./swagger.yaml
-
+```
 I have done this already
 
 ## Generate certs
